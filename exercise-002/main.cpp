@@ -28,13 +28,21 @@ auto main(int argc, char **argv) -> int
     //Vektor erstellen mit Anzahl Elemente durch count vorgegeben
     std::vector<int> data(count);
 
+    //Vektor mit Zufallszahlen füllen
     for (int i = 0; i < count; i++)
     {
         data[i] = std::rand() % 101;
     }
 
-    //Ausgabetext
+    //Vektorgröße ausgeben
     fmt::print("Created a vector with {} elements", count);
+    //Vektor ausgeben
+    fmt::print("Created this vector: {}", fmt::join(data, ", "));
+
+    //Zahlen im Vektor ihrer Größe nach ordnen
+    std::sort(data.begin(), data.end());
+
+    //Geordneten Vektor ausgeben
     fmt::print("Created this vector: {}", fmt::join(data, ", "));
 
     /**
