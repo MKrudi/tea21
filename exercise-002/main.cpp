@@ -13,7 +13,7 @@ auto main(int argc, char **argv) -> int
     // Möglichkeit, -V oder --version einzugeben, um Versionsinformationen anzuzeigen
     CLI::App app{PROJECT_NAME};
     //Initialisierung count
-    auto count = 20;
+    int count = 20;
     try
     {
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
@@ -28,8 +28,14 @@ auto main(int argc, char **argv) -> int
     //Vektor erstellen mit Anzahl Elemente durch count vorgegeben
     std::vector<int> data(count);
 
+    for (int i = 0; i < count; i++)
+    {
+        data[i] = std::rand() % 101;
+    }
+
     //Ausgabetext
     fmt::print("Created a vector with {} elements", count);
+    fmt::print("Created this vector: {}", fmt::join(data, ", "));
 
     /**
      * The {fmt} lib is a cross platform library for printing and formatting text
