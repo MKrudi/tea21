@@ -6,6 +6,9 @@
 
 auto main(int argc, char **argv) -> int
 {
+    //Beginn Zeitmessung
+    auto start = std::chrono::system_clock::now();
+    
     /**
      * CLI11 is a command line parser to add command line options
      * More information at https://github.com/CLIUtils/CLI11#usage
@@ -35,15 +38,22 @@ auto main(int argc, char **argv) -> int
     }
 
     //Vektorgröße ausgeben
-    fmt::print("Created a vector with {} elements", count);
+    fmt::print("Created a vector with {} elements\n", count);
     //Vektor ausgeben
-    fmt::print("Created this vector: {}", fmt::join(data, ", "));
+    fmt::print("Created this vector: {}\n", fmt::join(data, ", "));
 
     //Zahlen im Vektor ihrer Größe nach ordnen
     std::sort(data.begin(), data.end());
 
     //Geordneten Vektor ausgeben
-    fmt::print("Created this vector: {}", fmt::join(data, ", "));
+    fmt::print("Created this sorted vector: {}\n", fmt::join(data, ", "));
+
+    //Ende Zeitmessung
+    auto end = std::chrono::system_clock::now();
+    //Auswertung Zeitmessung
+    auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
+    //Ausgabe Auswertung Zeitmessung
+    fmt::print("Needed time: {}", elapsed);
 
     /**
      * The {fmt} lib is a cross platform library for printing and formatting text
