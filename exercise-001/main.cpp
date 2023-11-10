@@ -12,7 +12,7 @@ auto main(int argc, char **argv) -> int
     auto count{20};
     /**
      * CLI11 is a command line parser to add command line options
-     * More info at https://github.com/CLIUtils/CLI11#usage
+     * More information at https://github.com/CLIUtils/CLI11#usage
      */
     CLI::App app{PROJECT_NAME};
     try
