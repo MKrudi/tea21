@@ -19,6 +19,9 @@ int data2 = 5000;
 const int rodata = 42;
 const int rodata2 = 50;
 
+
+
+
 auto main(int argc, char **argv) -> int
 {
     fmt::print("Value of variable bss {} address of variable bss {}\n",bss, fmt::ptr(&bss));
