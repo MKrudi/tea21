@@ -14,7 +14,11 @@ bool LinkedList::insert_tail(LinkedListNode *node)
   if (nullptr == node) {
     return ret;
   }
-  // insert your code here....
+  //Altes tail-Element bekommt pNext-Zeiger, der auf neues Element zeigt
+  LinkedList::m_tail->pNext = node;
+  //Neues Element wird zu neuem tail-Element
+  LinkedList::m_tail = node;
+
   return ret;
 }
 
@@ -24,7 +28,9 @@ bool LinkedList::insert_head(LinkedListNode *node)
   if (nullptr == node) {
     return ret;
   }
-  // insert your code here....
+  node->pNext = LinkedList::m_head;
+  LinkedList::m_head = node;
+
   return ret;
 }
 
@@ -34,7 +40,9 @@ bool LinkedList::insert_after(LinkedListNode *loc, LinkedListNode *node)
   if ((nullptr == loc) || (nullptr == node)) {
     return ret;
   }
-  // insert your code here ....
+  node->pNext = loc->pNext;
+  loc->pNext = node;
+
   return ret;
 }
 
@@ -51,7 +59,10 @@ bool LinkedList::insert_before(LinkedListNode *loc, LinkedListNode *node)
 bool LinkedList::remove(LinkedListNode *node)
 {
   bool ret = false;
-  // insert your code here ...
+  
+
+  node->pNext = nullptr;
+
   return ret;
 }
 
