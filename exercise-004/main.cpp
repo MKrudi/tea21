@@ -34,6 +34,8 @@ auto main(int argc, char **argv) -> int
     fmt::print("Hello, {}!\n", app.get_name());
     fmt::print("File: {}", filename);
 
+    BMP bmp;
+    bmp.read(filename);
     /* INSERT YOUR CODE HERE */
 
     return 0; /* exit gracefully*/

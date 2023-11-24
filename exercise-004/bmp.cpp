@@ -4,6 +4,7 @@
 
 bool BMP::read(const std::string& filename)
 {
+    fmt::print("Test");
     auto ret = false;
     // Header und Info erstellen
     std::ifstream infile; 
@@ -33,13 +34,20 @@ bool BMP::read(const std::string& filename)
     // Vektor für Pixel-Buffer
     int buffer_size = info_header.biWidth*info_header.biHeight;      //Breite mal Höhe des Bildes
     std::vector<pixel> pixel_buffer(buffer_size);
-    for (int i; i <= buffer_size; i++)
+    for (int i = 0; i < buffer_size; i++)
     {
+        uint8_t padding = 0;
         infile >> pixel_buffer[i].red;
         infile >> pixel_buffer[i].green;
         infile >> pixel_buffer[i].blue;
+        infile >> padding;
     }
 
+    std::vector<uint8_t> grey_buffer(buffer_size);
+    for (int i = 0; i < buffer_size; i++)
+    {
+        grey_buffer[i] = pixel_buffer[i].grey();
+    }
     
     return ret;
 }
