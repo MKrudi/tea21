@@ -32,11 +32,10 @@ auto main(int argc, char **argv) -> int
      * More info at https://fmt.dev/latest/api.html
      */
     fmt::print("Hello, {}!\n", app.get_name());
-    fmt::print("File: {}", filename);
+    fmt::println("File: {}", filename);
 
     BMP bmp;
     bmp.read(filename);
-    /* INSERT YOUR CODE HERE */
 
     return 0; /* exit gracefully*/
 }
