@@ -3,9 +3,11 @@
 
 #include "CLI/CLI.hpp"
 #include "config.h"
+#include "bmp.h"
 
 auto main(int argc, char **argv) -> int
 {
+    std::string filename{DEFAULT_BMP_FILE};
     /**
      * CLI11 is a command line parser to add command line options
      * More info at https://github.com/CLIUtils/CLI11#usage
@@ -14,6 +16,9 @@ auto main(int argc, char **argv) -> int
     try
     {
         app.set_version_flag("-V,--version", fmt::format("{} {}", PROJECT_VER, PROJECT_BUILD_DATE));
+        app.add_option("-f,--file",
+            filename,
+            fmt::format("The filename for the Bitmap, default: {}",filename));
         app.parse(argc, argv);
     }
     catch (const CLI::ParseError &e)
@@ -27,6 +32,7 @@ auto main(int argc, char **argv) -> int
      * More info at https://fmt.dev/latest/api.html
      */
     fmt::print("Hello, {}!\n", app.get_name());
+    fmt::print("File: {}", filename);
 
     /* INSERT YOUR CODE HERE */
 
