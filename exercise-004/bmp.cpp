@@ -11,13 +11,14 @@ static void read_value(std::fstream& file,T* value )
 
 void displayAsciiImage(const std::vector<uint8_t>&grey_buffer, int width, int height)
 {
-    const std::string ascii_char = "-.:-=+*#%@";
+    const std::string ascii_chars = " .:-=+*#%@";
 
     for (int j = 0; j < height; j++)
     {
         for (int i = 0; i < width; j++)
         {
-            int index = grey_buffer[i+(height-j)*width]*(ascii_char.size()-1)/255;
+            int index = grey_buffer[i+(height-j)*width]*(ascii_chars.size()-1)/255;
+            char ascii_char = ascii_chars[index];
 
             std::cout << ascii_char;
         }
